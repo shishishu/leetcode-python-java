@@ -75,3 +75,29 @@ class Solution3 {
         return depth;
     }
 }
+
+// update after debug
+class Solution4 {
+    public int maxDepth(TreeNode root) {
+        int depth = 0;
+        List<TreeNode> level = new ArrayList<>();
+        if (root != null){
+            level.add(root);
+        }
+        while (!level.isEmpty()){
+            depth += 1;
+            List<TreeNode> queue = new ArrayList<>();
+            for(int i = 0; i < level.size(); i++){
+                root = level.get(i);  // iterator
+                if (root.left != null) {
+                    queue.add(root.left);
+                }
+                if (root.right != null) {
+                    queue.add(root.right);
+                }
+            }
+            level = queue;
+        }
+        return depth;
+    }
+}
